@@ -1,8 +1,10 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import {Grid} from '@material-ui/core'
 import Home  from './paginas/home/Home';
 import Navbar from './components/estatico/navbar/Navbar'
 import Footer from './components/estatico/footer/Footer'
+import Login from './paginas/login/Login';
 import './App.css';
 /*
 function App() {
@@ -37,11 +39,18 @@ function App() {
 
 function App(){
   return(
-    <>
-      <Navbar></Navbar>
-      <Home></Home>
-      <Footer></Footer>
-    </>
+    <Router>
+      <Navbar />
+      <div style={{ minHeight: '100vh' }}>
+        <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/home" element={<Home />} />
+            
+        </Routes>
+      </div>
+      <Footer />
+    </Router>
   )
 }
 
